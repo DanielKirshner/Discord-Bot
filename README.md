@@ -22,7 +22,7 @@
     
     `python runDiscordBot.py`
 
-- Wait for the message : `Bot connected to the server!`
+- Wait for the message : "Bot connected to the server!"
 - Then you should see your bot online in your discord server
 
 ## Bot features
