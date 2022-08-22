@@ -4,7 +4,7 @@
 
 ## Discord API Setup
 
-- Go to `discord.com/Developers`
+- Go to [Discord Developers site](https://discord.com/developers/)
 - Create a new application and click on "Add bot"
 - Go to "Bot" in settings
 - Give him permissions to read & send messages
