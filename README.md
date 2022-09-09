@@ -4,7 +4,7 @@
 
 ## Discord API Setup
 
-- Go to `discord.com/Developers`
+- Go to [Discord Developers site](https://discord.com/developers/)
 - Create a new application and click on "Add bot"
 - Go to "Bot" in settings
 - Give him permissions to read & send messages
@@ -22,7 +22,7 @@
     
     `python runDiscordBot.py`
 
-- Wait for the message : `Bot connected to the server!`
+- Wait for the message : "Bot connected to the server!"
 - Then you should see your bot online in your discord server
 
 ## Bot features
@@ -55,13 +55,14 @@ Type $help to view this menu
 ## Optional - Connect to the Raspberry Pi with SSH
 - If you give the pi power and just connect it to the internet you don't have any control of it 
 - SSH will be a good solution 
-- Get your raspberry pi IP address (or set it static)
 - Enable SSH in the raspberry pi configuraion under `Interfacees` tab
 - Connect it from your computer:
 
-    `ssh pi@192.168.XXX.XXX`
+    `ssh pi@raspberrypi.local`
 - Enter your pi password
 - Now you have a full control of your pi
+
+Note : If you have multiple pies connected to your network, you will need to put the pi's ip insted of `raspberrypi.local`
 
 ### Enjoy the bot!
 © 2021 Daniel Kirshner. All rights reserved.
