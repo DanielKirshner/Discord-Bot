@@ -32,7 +32,7 @@ async def on_message(message):
     print(f"Got a message from:\nUser ID : {message.author.id}\nUsername : {message.author.name}\nContent : {message.content}\n\n")
     if message.content.startswith('$hello'):
         await message.channel.send("Hey there! BLEEP BLOOP")
-    if message.content.startswith('$stockprice'):
+    elif message.content.startswith('$stockprice'):
         if len(message.content.split(" ")) == 2:
             ticker = message.content.split(" ")[1]
             price = get_stock_price(ticker)
@@ -42,7 +42,7 @@ async def on_message(message):
                 await message.channel.send("Stock price not found...")
         else:
             await message.channel.send("Wrong use of $stockprice\nFor more help type $help")
-    if message.content.startswith('$random'):
+    elif message.content.startswith('$random'):
         if len(message.content.split(" ")) == 3:
             try:
                 num1 = int(message.content.split(" ")[1])
@@ -53,8 +53,11 @@ async def on_message(message):
                 await message.channel.send("Wrong use of $random\nFor more help type $help")
         else:
             await message.channel.send("Wrong use of $random\nFor more help type $help")
-    if message.content.startswith('$help'):
+    elif message.content.startswith('$help'):
         await message.channel.send(get_help_string())
+    elif message.content.startswith('$'):
+        await message.channel.send("Type $help for help")
+    
 
 
 def get_help_string():
