@@ -4,6 +4,8 @@ import random
 from dotenv import load_dotenv
 import pandas_datareader as web
 
+BOT_USERNAME = "PythonBot"
+
 client = discord.Client()
 load_dotenv()
 TOKEN = os.getenv('TOKEN')  # The private bot token stored in the .env file
@@ -22,10 +24,12 @@ def get_stock_price(ticker):
 
 
 @client.event
-async def on_message(message):
+async def on_message(message):    
     message.content = message.content.lower()
     if message.author == client.user:
         return
+    
+    print(f"Got a message from:\nUser ID : {message.author.id}\nUsername : {message.author.name}\nContent : {message.content}\n\n")
     if message.content.startswith('$hello'):
         await message.channel.send("Hey there! BLEEP BLOOP")
     if message.content.startswith('$stockprice'):
@@ -66,9 +70,10 @@ def get_help_string():
     help_help = 'Type $help to view this menu'
     return f"```{title}\n\n{hello_help}\n{random_help}\n{random_usage}\n{stockprice_help}\n{stockprice_example}\n{help_help}```"
 
+
 @client.event
 async def on_connect():
-    print("Bot connected to the server!")
+    print(f"Bot connected to the server as:\nName: {client.user.name}\nID: {client.user.id}\n")
 
 
 client.run(TOKEN)
