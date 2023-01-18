@@ -1,6 +1,7 @@
 import os
 import discord
 import random
+import datetime as dt
 from dotenv import load_dotenv
 import pandas_datareader as web
 
@@ -11,7 +12,16 @@ load_dotenv()
 TOKEN = os.getenv('TOKEN')  # The private bot token stored in the .env file
 
 
-def get_stock_price(ticker):
+def timestamp_now() -> str:
+    """
+    Returns current timestamp for the logger.
+    Returns:
+        str: Current timestamp formatted as HOUR:MINUTE:SECOND
+    """
+    now = dt.datetime.now()
+    return f"{now.day:02d}/{now.month:02d}/{now.year:04d}-{now.hour:02d}:{now.minute:02d}:{now.second:02d}"
+
+def get_stock_price(ticker) -> any:
     """
     Search for a stock price in yahoo and returns the price of the ticker
     """
@@ -24,12 +34,12 @@ def get_stock_price(ticker):
 
 
 @client.event
-async def on_message(message):    
+async def on_message(message) -> None:    
     message.content = message.content.lower()
     if message.author == client.user:
         return
     
-    print(f"Got a message from:\nUser ID : {message.author.id}\nUsername : {message.author.name}\nContent : {message.content}\n\n")
+    print(f"{timestamp_now()} - Got a message from:\nUser ID : {message.author.id}\nUsername : {message.author.name}\nContent : {message.content}\n\n")
     if message.content.startswith('$hello'):
         await message.channel.send("Hey there! BLEEP BLOOP")
     elif message.content.startswith('$stockprice'):
@@ -60,7 +70,7 @@ async def on_message(message):
     
 
 
-def get_help_string():
+def get_help_string() -> str:
     """
     returns a help menu for the user
     """
@@ -75,8 +85,8 @@ def get_help_string():
 
 
 @client.event
-async def on_connect():
-    print(f"Bot connected to the server as:\nName: {client.user.name}\nID: {client.user.id}\n")
+async def on_connect() -> None:
+    print(f"{timestamp_now()} - Bot connected to the server as:\nName: {client.user.name}\nID: {client.user.id}\n")
 
 
 client.run(TOKEN)
