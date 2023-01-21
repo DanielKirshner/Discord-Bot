@@ -87,7 +87,7 @@ def get_help_string() -> str:
 
 @client.event
 async def on_connect() -> None:
-    print(f"{timestamp_now()} - Bot connected to the server as:\nName: {client.user.name}\nID: {client.user.id}\n")
+    print(f"[bold green]{timestamp_now()} - Bot connected to the server as:\nName: {client.user.name}\nID: {client.user.id}\n")
 
 
 client.run(TOKEN)
