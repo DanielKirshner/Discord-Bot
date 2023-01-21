@@ -1,6 +1,7 @@
 import os
 import discord
 import random
+from rich import print
 import datetime as dt
 from dotenv import load_dotenv
 import pandas_datareader as web
@@ -62,7 +63,7 @@ async def on_message(message) -> None:
             except ValueError:
                 await message.channel.send("Wrong use of $random\nFor more help type $help")
         else:
-            await message.channel.send("Wrong use of $random\nFor more help type $help")
+            await message.channel.send("Wrong use of $random - you need to give me 2 numbers...\nFor more help type $help")
     elif message.content.startswith('$help'):
         await message.channel.send(get_help_string())
     elif message.content.startswith('$'):
